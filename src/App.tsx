@@ -1,18 +1,17 @@
-import { theme } from './theme/theme';
-import './App.css';
 import { ThemeProvider } from '@emotion/react';
+import { theme } from './theme/theme';
+import * as S from './App.styles';
+import { Menu } from './components/Menu/Menu';
+
 
 function App() {
 
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <div style={{
-          color: theme.colors.main,
-          flexGrow: 1
-          }}>Le theme a bien ete cree</div>
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={theme}>
+      <S.Container>
+        <Menu />
+      </S.Container>
+    </ThemeProvider>
   )
 }
 
