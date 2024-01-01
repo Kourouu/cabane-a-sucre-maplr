@@ -1,13 +1,18 @@
+import { Link } from 'react-router-dom';
+
 import * as S from './MenuItem.styles';
 
 type MenuItemProps = {
-  title: string
+  title: string,
+  destination: string,
 }
 
-export const MenuItem = ({title}: MenuItemProps) => {
+export const MenuItem = ({title, destination}: MenuItemProps) => {
   return (
     <>
-      <S.MenuItemContainer>{title}</S.MenuItemContainer>
+      <S.MenuItemContainer>
+        <Link to={destination}>{title}</Link>
+      </S.MenuItemContainer>
     </>
   )
 }
