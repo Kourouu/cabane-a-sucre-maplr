@@ -10,5 +10,8 @@ export const theme = {
   },
   space: {
     small: 8
+  },
+  borderWidths: {
+    small: 1
   }
 }

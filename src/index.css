@@ -3,6 +3,10 @@ body {
   margin: 0;
 }
 
+#root {
+  height: 100vh;
+}
+
 a {
   font-weight: 500;
   color: #646cff;

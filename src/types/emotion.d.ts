@@ -13,6 +13,9 @@ declare module '@emotion/react' {
         },
         space: {
           small: number
+        },
+        borderWidths: {
+          small: number
         }
     }
 }

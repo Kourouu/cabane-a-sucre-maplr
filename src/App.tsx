@@ -1,4 +1,5 @@
 import { ThemeProvider } from '@emotion/react';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { theme } from './theme/theme';
 import * as S from './App.styles';
@@ -12,21 +13,24 @@ import { Cart } from './components/Cart/Cart';
 
 function App() {
 
-  return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
+  const queryClient = new QueryClient();
 
-        <S.Container>
-          <Menu />
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <S.Container>
+            <Menu />
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/products' element={<Products />} />
-              <Route path='/products/:type' element={<Product />} />
+              <Route path='/products/:id' element={<Product />} />
               <Route path='/cart' element={<Cart />} /> 
             </Routes>
-        </S.Container>
-      </BrowserRouter>
-    </ThemeProvider>
+          </S.Container>
+        </BrowserRouter>
+      </ThemeProvider>
+    </QueryClientProvider>
   )
 }
 
