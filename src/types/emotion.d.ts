@@ -9,7 +9,8 @@ declare module '@emotion/react' {
         };
         sizes: {
           height: {
-            menu: number
+            menu: number,
+            symbols: number,
           }
         },
         space: {

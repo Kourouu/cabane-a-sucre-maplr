@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CartContext } from '../../contexts';
 import { ProductDetailsType } from '../../shared/types';
 import { getPropertyLabel } from '../../utils/getPropertyLabel';
@@ -6,6 +6,7 @@ import { Image } from '../Image/Image';
 
 import * as S from './Card.styles';
 import { Button } from '../../ui/Button/Button';
+import { Quantity } from './Quantity/Quantity';
 
 type CardProps = {
   product: ProductDetailsType,
@@ -13,6 +14,7 @@ type CardProps = {
 }
 
 export const Card = ({product, isActive = true}: CardProps) => {
+  const [quantity, setQuantity] = useState(1);
   const { cartItems, setCartItems } = useContext(CartContext);
   console.log(cartItems)
   console.log(product)
@@ -20,7 +22,7 @@ export const Card = ({product, isActive = true}: CardProps) => {
   const updateItemQty = () => cartItems.map((item) => item.id === product.id ? 
   {
     ...item,
-    qty: item.qty + 1
+    qty: quantity
   } : item);
   
 
@@ -28,7 +30,7 @@ export const Card = ({product, isActive = true}: CardProps) => {
     ...cartItems,
     {
       ...product,
-      qty: 1
+      qty: quantity
     }
   ]);
 
@@ -54,6 +56,7 @@ export const Card = ({product, isActive = true}: CardProps) => {
           {entries.map((entry) => (<li key={entry[0]}>{getPropertyLabel(entry[0])} : {entry[1]}</li>))}
         </S.List>
       </S.ProductCardContainer>
+      <Quantity quantity={quantity} setQuantity={setQuantity}/>
       <Button text='Ajouter au panier' onClick={() => addToCart()}/>
     </>
     )

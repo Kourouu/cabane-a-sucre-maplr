@@ -7,6 +7,8 @@ export const ProductCardContainer = styled(Link)<{isActive: boolean}>(({theme, i
   box-shadow: 0px 8px 20px 0px rgba(0,0,0,0.04);
   ${isActive && 'cursor: pointer'};
   transition: all .2s ease-in-out;
+  text-decoration: none;
+  color: ${theme.colors.main}
   &:hover {
     transform: scale(1.05); 
   }

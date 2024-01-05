@@ -6,7 +6,8 @@ export const theme = {
   },
   sizes: {
     height: {
-      menu: 50
+      menu: 50,
+      symbols: 25,
     }
   },
   space: {
