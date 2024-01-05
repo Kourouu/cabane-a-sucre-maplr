@@ -1,4 +1,4 @@
-export interface ProductOverview {
+export interface ProductOverviewType {
   id: string,
   image: string,
   maxQty: number,
@@ -7,6 +7,15 @@ export interface ProductOverview {
   type: string,
 }
 
-export type ProductDetails = Omit<ProductOverview, 'maxQty'> & {
+export type ProductDetailsType = Omit<ProductOverviewType, 'maxQty'> & {
   stock: number,
+}
+
+export interface CartItemType extends ProductDetailsType {
+  qty: number;
+}
+
+export type CartContextType = {
+  cartItems: CartItemType[],
+  setCartItems: (cartItems: CartItemType[]) => void
 }

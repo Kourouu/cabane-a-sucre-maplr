@@ -18,7 +18,7 @@ export const Products = () => {
         muted
       /> */}
       <S.CardsContainer>
-      {data?.data.map((productOverview) => <Card product={productOverview} />)}
+      {data?.data.map((productOverview) => <div><Card product={productOverview} /></div>)}
       </S.CardsContainer>
     </S.ProductsContainer>
   )

@@ -1,7 +1,8 @@
 import * as S from './Button.styles';
 
-type ButtonProps = {
-  text: string
+interface ButtonProps {
+  text: string,
+  onClick: () => void
 }
 
-export const Button = (({text}: ButtonProps) => (<S.Button to={'../products'}>{text}</S.Button>))
+export const Button = (({text, onClick}: ButtonProps) => (<S.Button onClick={onClick}>{text}</S.Button>))
