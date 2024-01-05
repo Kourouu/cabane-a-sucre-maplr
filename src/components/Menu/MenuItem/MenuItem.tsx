@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from '../../../ui/Link/Link';
 
 import * as S from './MenuItem.styles';
 

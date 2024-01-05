@@ -7,7 +7,7 @@ import * as S from './App.styles';
 import { Home } from './components/Home/Home';
 import { Menu } from './components/Menu/Menu';
 import { Products } from './components/Products/Products';
-import { Product } from './components/Products/Product/Product';
+import { ProductDetails } from './components/ProductDetails/ProductDetails';
 import { Cart } from './components/Cart/Cart';
 
 
@@ -21,12 +21,14 @@ function App() {
         <BrowserRouter>
           <S.Container>
             <Menu />
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/products' element={<Products />} />
-              <Route path='/products/:id' element={<Product />} />
-              <Route path='/cart' element={<Cart />} /> 
-            </Routes>
+            <S.Content>
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/products' element={<Products />} />
+                <Route path='/products/:id' element={<ProductDetails />} />
+                <Route path='/cart' element={<Cart />} /> 
+              </Routes>
+            </S.Content>
           </S.Container>
         </BrowserRouter>
       </ThemeProvider>

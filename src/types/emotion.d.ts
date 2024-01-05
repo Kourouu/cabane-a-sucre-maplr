@@ -4,7 +4,8 @@ declare module '@emotion/react' {
     export interface Theme {
         colors: {
             main: string;
-            secondary: string
+            secondary: string;
+            tertiary: string;
         };
         sizes: {
           height: {
@@ -12,9 +13,13 @@ declare module '@emotion/react' {
           }
         },
         space: {
-          small: number
+          small: number,
+          medium: number
         },
         borderWidths: {
+          small: number
+        },
+        radii: {
           small: number
         }
     }
