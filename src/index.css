@@ -1,5 +1,11 @@
+@font-face {
+  font-family: 'HK Grotesk Medium';
+  src: local('MyFont'), url(./fonts/HK-Grotesk/HKGrotesk-Medium.woff) format('woff');
+
+}
+
 body {
-  font-family: HK Grotesk Medium,Helvetica,Arial,Lucida,sans-serif;
+  font-family: 'HK Grotesk Medium',Helvetica,Arial,Lucida,sans-serif;
   margin: 0;
 }
 
