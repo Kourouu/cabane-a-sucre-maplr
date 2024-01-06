@@ -1,29 +1,38 @@
 import { useContext, useState } from 'react';
-import { CartContext } from '../../contexts';
-import { ProductDetailsType } from '../../shared/types';
-import { getPropertyLabel } from '../../utils/getPropertyLabel';
-import { Image } from '../Image/Image';
 
-import * as S from './Card.styles';
-import { Button } from '../../ui/Button/Button';
+import { CartContext } from '../../contexts';
+
+import { ProductOverviewType } from '../../shared/types';
+
+import { getPropertyLabel } from '../../utils/getPropertyLabel';
+
+import { Image } from '../Image/Image';
 import { Quantity } from './Quantity/Quantity';
 
+import * as S from './Card.styles';
+
 type CardProps = {
-  product: ProductDetailsType,
-  isActive?: boolean
+  product: ProductOverviewType,
+  active?: boolean
 }
 
-export const Card = ({product, isActive = true}: CardProps) => {
-  const [quantity, setQuantity] = useState(1);
-  const { cartItems, setCartItems } = useContext(CartContext);
-  console.log(cartItems)
-  console.log(product)
+export const Card = ({product, active = true}: CardProps) => {
 
-  const updateItemQty = () => cartItems.map((item) => item.id === product.id ? 
-  {
-    ...item,
-    qty: quantity
-  } : item);
+  const { cartItems, setCartItems } = useContext(CartContext);
+  const currentItemInCart = cartItems.find((item) => item.id === product.id)
+
+  const [quantity, setQuantity] = useState(currentItemInCart?.qty || 1)
+  console.log(cartItems)
+
+  const itemIndexInCartArray = cartItems.findIndex((item) => item.id === product.id)
+
+  const updateItemQty = () => cartItems.map((item) => item.id === product.id ?
+    {
+      ...item,
+      qty: quantity
+    } 
+  : item
+  );
   
 
   const addNewItemToCart = () => ([
@@ -34,9 +43,8 @@ export const Card = ({product, isActive = true}: CardProps) => {
     }
   ]);
 
-  const addToCart = () => {
-    const itemIndexInCartArray = cartItems.findIndex((item) => item.id === product.id)
-
+  const updateCart = () => {
+    console.log('updateCart')
     setCartItems(itemIndexInCartArray > -1 ? updateItemQty() : addNewItemToCart())
 }
 
@@ -45,8 +53,8 @@ export const Card = ({product, isActive = true}: CardProps) => {
   return (
     <>
       <S.ProductCardContainer
-        to={isActive ? product.id : ''}
-        isActive={isActive}
+        to={active ? product.id : ''}
+        active={active}
       >
         <Image 
           src={`data:image/png;base64, ${product.image}`}
@@ -56,8 +64,12 @@ export const Card = ({product, isActive = true}: CardProps) => {
           {entries.map((entry) => (<li key={entry[0]}>{getPropertyLabel(entry[0])} : {entry[1]}</li>))}
         </S.List>
       </S.ProductCardContainer>
-      <Quantity quantity={quantity} setQuantity={setQuantity}/>
-      <Button text='Ajouter au panier' onClick={() => addToCart()}/>
+      <Quantity
+        product={currentItemInCart}
+        quantity={quantity}
+        setQuantity={setQuantity}
+        updateCart={updateCart}
+      />
     </>
     )
 }

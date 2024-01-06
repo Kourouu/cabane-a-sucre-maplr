@@ -6,7 +6,7 @@ export const Container = styled.div(({theme}) => ({
   display: 'flex',
   flexDirection: 'column',
   backgroundColor: theme.colors.secondary,
-  color: theme.colors.main,
+  color: theme.colors.primary,
 }))
 
 export const Content = styled.div(({ theme }) => ({

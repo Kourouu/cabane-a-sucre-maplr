@@ -2,10 +2,10 @@ import styled from '@emotion/styled';
 
 export const MenuContainer = styled.div(({theme}) => ({
   height: theme.sizes.height.menu,
-  padding: theme.space.small,
+  padding: theme.space.s,
   display: 'flex',
   justifyContent: 'space-between',
-  backgroundColor: theme.colors.main,
+  backgroundColor: theme.colors.primary,
   color: theme.colors.secondary,
 }))
 
