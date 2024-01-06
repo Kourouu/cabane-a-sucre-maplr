@@ -1,16 +1,19 @@
-// import { useContext } from 'react';
+import { useContext } from 'react';
 
-// import { CartContext } from '../../contexts';
+import { CartContext } from '../../contexts';
+
+import { ItemInCart } from '../ItemInCart/ItemInCart';
 
 import * as S from './Cart.styles';
 
-
 export const Cart = () => {
-  // const { cartItems, setCartItems } = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
 
   return (
     <S.CartContainer>
-      Retrouvez ici les articles de votre panier
+      {cartItems.map((cartItem) => (
+        <ItemInCart currentItem={cartItem} />
+      ))}
     </S.CartContainer>
   )
 }
