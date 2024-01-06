@@ -15,7 +15,7 @@ import { Cart } from './components/Cart/Cart';
 import * as S from './App.styles';
 import { CartItemType } from './shared/types';
 
-function App() {
+export const App = () => {
   const queryClient = new QueryClient();
 
   const [cartItems, setCartItems] = useState<CartItemType[]>([]);
@@ -41,6 +41,4 @@ function App() {
       </ThemeProvider>
     </QueryClientProvider>
   );
-}
-
-export default App;
+};

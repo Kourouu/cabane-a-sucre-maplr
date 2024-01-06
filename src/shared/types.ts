@@ -7,10 +7,6 @@ export interface ProductOverviewType {
   type: string,
 }
 
-export type ProductDetailsType = Omit<ProductOverviewType, 'maxQty'> & {
-  stock: number,
-}
-
 export interface CartItemType extends ProductOverviewType {
   qty: number;
 }
