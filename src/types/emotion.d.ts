@@ -3,7 +3,7 @@ import '@emotion/react';
 declare module '@emotion/react' {
     export interface Theme {
         colors: {
-            main: string;
+            primary: string;
             secondary: string;
             tertiary: string;
         };
@@ -14,14 +14,15 @@ declare module '@emotion/react' {
           }
         },
         space: {
-          small: number,
-          medium: number
+          s: number,
+          m: number
         },
         borderWidths: {
-          small: number
+          s: number
         },
         radii: {
-          small: number
+          xs: number,
+          s: number
         }
     }
 }

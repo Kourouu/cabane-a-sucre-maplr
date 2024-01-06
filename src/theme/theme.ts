@@ -1,6 +1,6 @@
 export const theme = {
   colors: {
-    main: '#1B3D5D',
+    primary: '#1B3D5D',
     secondary: '#FFFFFF',
     tertiary: '#F7F9FE'
   },
@@ -11,13 +11,14 @@ export const theme = {
     }
   },
   space: {
-    small: 8,
-    medium: 15
+    s: 8,
+    m: 15
   },
   borderWidths: {
-    small: 1
+    s: 1
   },
   radii: {
-    small: 10
+    xs: 5,
+    s: 10
   }
 }
