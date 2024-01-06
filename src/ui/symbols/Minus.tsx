@@ -6,6 +6,12 @@ export const Minus = ({onClick}: {onClick: () => void}) => (
     fill="blue"
     onClick={onClick}
   >
-    <path d="M6 12L18 12" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path
+      d="M6 12L18 12" 
+      stroke="#000000"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </S.Svg>
 )
