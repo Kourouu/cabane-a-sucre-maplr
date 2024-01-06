@@ -10,11 +10,3 @@ export const CardsContainer = styled.header(() => ({
   justifyContent: 'space-evenly',
 }))
 
-export const Video = styled.video(() => ({
-  objectFit: 'cover',
-  width: '100vw',
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  zIndex: -1
-}))
