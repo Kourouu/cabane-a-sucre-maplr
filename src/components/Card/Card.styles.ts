@@ -16,6 +16,7 @@ export const ProductCardContainer = styled(Link)<{active: boolean}>(({theme, act
 
 export const List = styled.ul(() => ({
   listStyleType: 'none',
+  textAlign: 'center',
   padding: 0,
   margin: 0
 
