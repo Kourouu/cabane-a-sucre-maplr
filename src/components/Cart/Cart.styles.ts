@@ -7,3 +7,7 @@ export const CartContainer = styled.div(({ theme }) => ({
   flexDirection: 'column',
   gap: theme.space.m,
 }))
+
+export const ButtonsContainer = styled.div(() => ({
+  display: 'flex'
+}))

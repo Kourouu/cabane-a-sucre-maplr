@@ -19,3 +19,8 @@ export type CartContextType = {
   cartItems: CartItemType[],
   setCartItems: (cartItems: CartItemType[]) => void
 }
+
+export type CartPayloadType = {
+  productId: string,
+  qty: number
+}[]
