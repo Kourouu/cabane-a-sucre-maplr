@@ -1,4 +1,3 @@
-
 import { CartItemType } from '../../../shared/types';
 
 import { Button } from '../../../ui/Button/Button';
@@ -8,34 +7,47 @@ import { Plus } from '../../../ui/symbols/Plus';
 import * as S from './Quantity.styles';
 
 type QuantityProps = {
-  product: CartItemType,
-  quantity: number,
-  setQuantity: (quantity: number) => void,
-  updateCart: () => void
-}
+  product: CartItemType;
+  quantity: number;
+  setQuantity: (quantity: number) => void;
+  updateCart: () => void;
+};
 
-export const Quantity = ({quantity, product, setQuantity, updateCart}: QuantityProps) => {
-  const isMoreAvailable = parseInt(product.maxQty, 10) > quantity
+export const Quantity = ({
+  quantity,
+  product,
+  setQuantity,
+  updateCart,
+}: QuantityProps) => {
+  const isMoreAvailable = parseInt(product.maxQty, 10) > quantity;
   return (
-    product && (<S.QuantityContainer>
-      <S.InputContainer>
-        <Minus
-          onClick={() => quantity > 1 ? setQuantity(quantity - 1) : null}
-          isActive={quantity > 1}
-        />
-        <S.Input
-          type='number'
-          min={1}
-          max={product.maxQty}
-          onChange={(e) => setQuantity(parseInt(e.target.value, 10) < parseInt(product.maxQty, 10) ? parseInt(e.target.value) : parseInt(product.maxQty, 10))}
-          value={quantity}
-        />
-          <Plus 
-            onClick={() => isMoreAvailable ? setQuantity(quantity + 1) : null} 
+    product && (
+      <S.QuantityContainer>
+        <S.InputContainer>
+          <Minus
+            onClick={() => (quantity > 1 ? setQuantity(quantity - 1) : null)}
+            isActive={quantity > 1}
+          />
+          <S.Input
+            type="number"
+            min={1}
+            max={product.maxQty}
+            onChange={(e) =>
+              setQuantity(
+                parseInt(e.target.value, 10) < parseInt(product.maxQty, 10)
+                  ? parseInt(e.target.value)
+                  : parseInt(product.maxQty, 10)
+              )
+            }
+            value={quantity}
+          />
+          <Plus
+            onClick={() => (isMoreAvailable ? setQuantity(quantity + 1) : null)}
             isActive={isMoreAvailable}
           />
         </S.InputContainer>
-        <Button text='Ajouter au panier' onClick={updateCart}/>
-    </S.QuantityContainer>)
-  )
-}
+        <Button text="Ajouter au panier" onClick={updateCart} />
+      </S.QuantityContainer>
+    )
+  );
+};
