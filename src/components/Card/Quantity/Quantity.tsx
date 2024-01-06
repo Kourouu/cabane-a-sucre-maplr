@@ -1,3 +1,4 @@
+
 import { CartItemType } from '../../../shared/types';
 
 import { Button } from '../../../ui/Button/Button';
@@ -7,27 +8,32 @@ import { Plus } from '../../../ui/symbols/Plus';
 import * as S from './Quantity.styles';
 
 type QuantityProps = {
-  product?: CartItemType,
+  product: CartItemType,
   quantity: number,
   setQuantity: (quantity: number) => void,
   updateCart: () => void
 }
 
 export const Quantity = ({quantity, product, setQuantity, updateCart}: QuantityProps) => {
-  console.log(product?.qty)
-  console.log(quantity)
+  const isMoreAvailable = parseInt(product.maxQty, 10) > quantity
   return (
-    <S.QuantityContainer>
+    product && (<S.QuantityContainer>
       <S.InputContainer>
-        <Minus onClick={() => setQuantity(quantity - 1)} />
+        <Minus
+          onClick={() => quantity > 1 ? setQuantity(quantity - 1) : null}
+          isActive={quantity > 1}
+        />
         <S.Input
           type='number'
           onChange={(e) => setQuantity(parseInt(e.target.value))}
           value={quantity}
         />
-          <Plus onClick={() => setQuantity(quantity + 1)} />
+          <Plus 
+            onClick={() => isMoreAvailable ? setQuantity(quantity + 1) : null} 
+            isActive={isMoreAvailable}
+          />
         </S.InputContainer>
         <Button text='Ajouter au panier' onClick={updateCart}/>
-    </S.QuantityContainer>
+    </S.QuantityContainer>)
   )
 }

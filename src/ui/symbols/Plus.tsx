@@ -1,7 +1,8 @@
 import * as S from './symbols.styles';
 
-export const Plus = ({onClick}: {onClick: () => void}) => (
+export const Plus = ({onClick, isActive}: {onClick: () => void, isActive: boolean}) => (
   <S.Svg
+    isActive={isActive}
     fill="red"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 45.402 45.402"

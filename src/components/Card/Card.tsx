@@ -17,12 +17,16 @@ type CardProps = {
 }
 
 export const Card = ({product, active = true}: CardProps) => {
-
   const { cartItems, setCartItems } = useContext(CartContext);
   const currentItemInCart = cartItems.find((item) => item.id === product.id)
 
+  const productWithQuantity = {
+    ...product,
+    qty: currentItemInCart?.qty ?? 0
+  }
+
+
   const [quantity, setQuantity] = useState(currentItemInCart?.qty || 1)
-  console.log(cartItems)
 
   const itemIndexInCartArray = cartItems.findIndex((item) => item.id === product.id)
 
@@ -44,7 +48,6 @@ export const Card = ({product, active = true}: CardProps) => {
   ]);
 
   const updateCart = () => {
-    console.log('updateCart')
     setCartItems(itemIndexInCartArray > -1 ? updateItemQty() : addNewItemToCart())
 }
 
@@ -65,7 +68,7 @@ export const Card = ({product, active = true}: CardProps) => {
         </S.List>
       </S.ProductCardContainer>
       <Quantity
-        product={currentItemInCart}
+        product={productWithQuantity}
         quantity={quantity}
         setQuantity={setQuantity}
         updateCart={updateCart}
