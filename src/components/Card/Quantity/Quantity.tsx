@@ -25,7 +25,9 @@ export const Quantity = ({quantity, product, setQuantity, updateCart}: QuantityP
         />
         <S.Input
           type='number'
-          onChange={(e) => setQuantity(parseInt(e.target.value))}
+          min={1}
+          max={product.maxQty}
+          onChange={(e) => setQuantity(parseInt(e.target.value, 10) < parseInt(product.maxQty, 10) ? parseInt(e.target.value) : parseInt(product.maxQty, 10))}
           value={quantity}
         />
           <Plus 
