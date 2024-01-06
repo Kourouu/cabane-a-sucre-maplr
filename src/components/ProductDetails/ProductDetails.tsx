@@ -4,9 +4,10 @@ import { useParams } from 'react-router-dom'
 import { getProduct } from '../../api/getProduct';
 
 import { Card } from '../Card/Card';
+import { Link } from '../../ui/Link/Link';
 
 import * as S from './ProductDetails.styles';
-import { Link } from '../../ui/Link/Link';
+
 
 export const ProductDetails = (() => {
   const { id } = useParams();
@@ -20,7 +21,7 @@ export const ProductDetails = (() => {
           <Link to={'../products'}>Retourner au catalogue</Link>
             <Card
               product={productDetails}
-              isActive={false}
+              active={false}
             />
         </S.ProductDetailsContainer>
       </div>
