@@ -7,7 +7,7 @@ import { Card } from '../Card/Card';
 import * as S from './Products.styles';
 
 export const Products = () => {
-  const { data } = useQuery({ queryKey: ['products'], queryFn: getProducts })
+  const { data, isLoading } = useQuery({ queryKey: ['products'], queryFn: getProducts })
 
   return (
     <S.ProductsContainer>
@@ -18,7 +18,8 @@ export const Products = () => {
         muted
       /> */}
       <S.CardsContainer>
-      {data?.data.map((productOverview) => <div><Card product={productOverview} /></div>)}
+        {isLoading && <div>Un peu de patience, la recuperation de la liste de nos douceurs sucrees est en cours...</div>}
+        {data?.data.map((productOverview) => <div key={productOverview.id}><Card product={productOverview} /></div>)}
       </S.CardsContainer>
     </S.ProductsContainer>
   )
