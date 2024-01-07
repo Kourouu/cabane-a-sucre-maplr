@@ -1,6 +1,4 @@
-import { useContext, useState } from 'react';
-
-import { CartContext } from '../../contexts';
+import { useState } from 'react';
 
 import { ProductOverviewType } from '../../shared/types';
 
@@ -10,6 +8,7 @@ import { Image } from '../../ui/Image/Image';
 import { Quantity } from './Quantity/Quantity';
 
 import * as S from './Card.styles';
+import { useGetCardProps, useUpdateCart } from './Card.hooks';
 
 type CardProps = {
   product: ProductOverviewType;
@@ -17,43 +16,11 @@ type CardProps = {
 };
 
 export const Card = ({ product, active = true }: CardProps) => {
-  const { cartItems, setCartItems } = useContext(CartContext);
-  const currentItemInCart = cartItems.find((item) => item.id === product.id);
-
-  const productWithQuantity = {
-    ...product,
-    qty: currentItemInCart?.qty ?? 0,
-  };
-
-  const [quantity, setQuantity] = useState(currentItemInCart?.qty || 1);
-
-  const itemIndexInCartArray = cartItems.findIndex(
-    (item) => item.id === product.id
+  const { isCurrentItemInCart, productWithQuantity } = useGetCardProps(product);
+  const [quantity, setQuantity] = useState(
+    isCurrentItemInCart ? productWithQuantity.qty : 1
   );
-
-  const updateItemQty = () =>
-    cartItems.map((item) =>
-      item.id === product.id
-        ? {
-            ...item,
-            qty: quantity,
-          }
-        : item
-    );
-
-  const addNewItemToCart = () => [
-    ...cartItems,
-    {
-      ...product,
-      qty: quantity,
-    },
-  ];
-
-  const updateCart = () => {
-    setCartItems(
-      itemIndexInCartArray > -1 ? updateItemQty() : addNewItemToCart()
-    );
-  };
+  const { updateCart } = useUpdateCart(product, quantity);
 
   const entries = Object.entries(product).filter(
     (entry) => entry[0] !== 'image' && entry[0] !== 'id'
