@@ -4,7 +4,7 @@ import { CartContext } from '../../contexts';
 
 import { CartItemType } from '../../shared/types';
 
-import { Image } from '../Image/Image';
+import { Image } from '../../ui/Image/Image';
 
 import * as S from './ItemInCart.styles';
 

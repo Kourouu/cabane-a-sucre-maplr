@@ -6,7 +6,7 @@ import { ProductOverviewType } from '../../shared/types';
 
 import { getPropertyLabel } from '../../utils/getPropertyLabel';
 
-import { Image } from '../Image/Image';
+import { Image } from '../../ui/Image/Image';
 import { Quantity } from './Quantity/Quantity';
 
 import * as S from './Card.styles';
