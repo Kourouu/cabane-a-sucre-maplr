@@ -4,7 +4,7 @@ import { CartContext } from '../../contexts';
 
 import { ProductOverviewType } from '../../shared/types';
 
-import { getPropertyLabel } from '../../utils/getPropertyLabel';
+import { getPropertyLabel } from './getPropertyLabel';
 
 import { Image } from '../../ui/Image/Image';
 import { Quantity } from './Quantity/Quantity';
