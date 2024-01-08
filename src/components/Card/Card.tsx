@@ -42,7 +42,7 @@ export const Card = ({ product, active = true }: CardProps) => {
         </S.List>
       </S.ProductCardContainer>
       <Quantity
-        product={productWithQuantity}
+        maxQty={parseInt(productWithQuantity.maxQty)}
         quantity={quantity}
         setQuantity={setQuantity}
         updateCart={updateCart}
