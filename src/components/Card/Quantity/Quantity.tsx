@@ -1,15 +1,15 @@
-import { Button } from '../../../ui/Button/Button';
-import { Minus } from '../../../ui/symbols/Minus';
-import { Plus } from '../../../ui/symbols/Plus';
+import { Button } from '../../../ui/Button/Button'
+import { Minus } from '../../../ui/symbols/Minus'
+import { Plus } from '../../../ui/symbols/Plus'
 
-import * as S from './Quantity.styles';
+import * as S from './Quantity.styles'
 
 type QuantityProps = {
-  maxQty: number;
-  quantity: number;
-  setQuantity: (quantity: number) => void;
-  updateCart: () => void;
-};
+  maxQty: number
+  quantity: number
+  setQuantity: (quantity: number) => void
+  updateCart: () => void
+}
 
 export const Quantity = ({
   quantity,
@@ -17,7 +17,7 @@ export const Quantity = ({
   setQuantity,
   updateCart,
 }: QuantityProps) => {
-  const isMoreAvailable = maxQty > quantity;
+  const isMoreAvailable = maxQty > quantity
   return (
     <S.QuantityContainer>
       <S.InputContainer>
@@ -45,5 +45,5 @@ export const Quantity = ({
       </S.InputContainer>
       <Button text="Ajouter au panier" onClick={updateCart} />
     </S.QuantityContainer>
-  );
-};
+  )
+}
