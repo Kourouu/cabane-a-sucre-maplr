@@ -1,4 +1,6 @@
 import React, { ReactElement } from 'react'
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
+
 import { render, RenderOptions, cleanup } from '@testing-library/react'
 import { ThemeProvider } from '@emotion/react'
 import { theme } from '../theme/theme'
@@ -9,10 +11,14 @@ afterEach(() => {
 })
 
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
+  const queryClient = new QueryClient()
+
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>{children}</BrowserRouter>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>{children}</BrowserRouter>
+      </ThemeProvider>
+    </QueryClientProvider>
   )
 }
 
