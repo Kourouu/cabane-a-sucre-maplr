@@ -1,5 +1,6 @@
 import { vi } from 'vitest'
 import { fireEvent, render } from '../../../tests/utils'
+
 import { Quantity } from './Quantity'
 
 const props = {
