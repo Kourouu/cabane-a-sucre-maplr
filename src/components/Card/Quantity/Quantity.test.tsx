@@ -1,11 +1,12 @@
-import { render } from '../../../tests/utils';
+import { vi } from 'vitest'
+import { fireEvent, render } from '../../../tests/utils';
 import { Quantity } from './Quantity';
 
 const props = {
   quantity: 3,
   maxQty: 10,
-  setQuantity: () => null,
-  updateCart: () => null,
+  setQuantity: vi.fn(),
+  updateCart: vi.fn()
 };
 
 describe('Quantity', () => {
@@ -15,7 +16,8 @@ describe('Quantity', () => {
     const minusSVG = getByTestId('svg-minus');
     const plusSVG = getByTestId('svg-plus');
     const input = getByRole('spinbutton');
-
+    fireEvent.click(plusSVG);
+    expect(props.setQuantity).toHaveBeenCalledTimes(1)
     expect(minusSVG).toBeTruthy();
     expect(input).toBeTruthy();
     expect(plusSVG).toBeTruthy();
