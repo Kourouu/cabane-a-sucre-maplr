@@ -1,10 +1,19 @@
 import React, { ReactElement } from 'react'
-import { render, RenderOptions } from '@testing-library/react'
+import { render, RenderOptions, cleanup } from '@testing-library/react'
 import { ThemeProvider } from '@emotion/react'
 import { theme } from '../theme/theme'
+import { BrowserRouter } from 'react-router-dom'
+
+afterEach(() => {
+  cleanup()
+})
 
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>
+  return (
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>{children}</BrowserRouter>
+    </ThemeProvider>
+  )
 }
 
 const customRender = (
