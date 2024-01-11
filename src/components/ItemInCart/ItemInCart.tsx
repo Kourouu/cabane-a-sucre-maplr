@@ -1,18 +1,10 @@
-import { useContext } from 'react';
+import { CartItemType } from '../../shared/types'
 
-import { CartContext } from '../../contexts';
+import { Image } from '../../ui/Image/Image'
 
-import { CartItemType } from '../../shared/types';
-
-import { Image } from '../../ui/Image/Image';
-
-import * as S from './ItemInCart.styles';
+import * as S from './ItemInCart.styles'
 
 export const ItemInCart = ({ currentItem }: { currentItem: CartItemType }) => {
-  const { cartItems } = useContext(CartContext);
-  console.log(cartItems);
-  console.log(currentItem);
-
   return (
     <S.ItemInCartContainer>
       <Image
@@ -34,5 +26,5 @@ export const ItemInCart = ({ currentItem }: { currentItem: CartItemType }) => {
         </div>
       </div>
     </S.ItemInCartContainer>
-  );
-};
+  )
+}
