@@ -1,13 +1,14 @@
-import * as S from './symbols.styles';
+import * as S from './symbols.styles'
 
 export const Plus = ({
   onClick,
   isActive,
 }: {
-  onClick: () => void;
-  isActive: boolean;
+  onClick: () => void
+  isActive: boolean
 }) => (
   <S.Svg
+    className="svg-plus"
     isActive={isActive}
     fill="red"
     xmlns="http://www.w3.org/2000/svg"
@@ -22,4 +23,4 @@ export const Plus = ({
       c2.283,0,4.134-1.867,4.133-4.15C45.399,20.425,43.548,18.557,41.267,18.557z"
     />
   </S.Svg>
-);
+)

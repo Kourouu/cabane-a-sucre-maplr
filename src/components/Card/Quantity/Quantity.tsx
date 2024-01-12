@@ -18,6 +18,17 @@ export const Quantity = ({
   updateCart,
 }: QuantityProps) => {
   const isMoreAvailable = maxQty > quantity
+
+  const handleUserInput = (value: string) => {
+    console.log(value)
+    const toNumber = parseInt(value, 10)
+    console.log(toNumber)
+
+    setQuantity(
+      isNaN(toNumber) ? 0 : toNumber < maxQty ? parseInt(value) : maxQty
+    )
+  }
+
   return (
     <S.QuantityContainer>
       <S.InputContainer>
@@ -29,13 +40,7 @@ export const Quantity = ({
           type="number"
           min={1}
           max={maxQty}
-          onChange={(e) =>
-            setQuantity(
-              parseInt(e.target.value, 10) < maxQty
-                ? parseInt(e.target.value)
-                : maxQty
-            )
-          }
+          onChange={(e) => handleUserInput(e.target.value)}
           value={quantity}
         />
         <Plus
