@@ -8,6 +8,11 @@ export const CartContainer = styled.div(({ theme }) => ({
   gap: theme.space.m,
 }))
 
+export const CartCard = styled.div(() => ({
+  display: 'flex',
+  alignItems: 'center'
+}))
+
 export const ButtonsContainer = styled.div(() => ({
   display: 'flex'
 }))

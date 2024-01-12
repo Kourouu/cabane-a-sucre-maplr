@@ -9,11 +9,15 @@ import { ItemInCart } from '../ItemInCart/ItemInCart'
 import { Button } from '../../ui/Button/Button'
 
 import * as S from './Cart.styles'
+import { Cross } from '../../ui/symbols/Cross'
 
 export const Cart = () => {
-  const { cartItems } = useContext(CartContext)
+  const { cartItems, setCartItems } = useContext(CartContext)
   const mutation = usePostCart()
   const navigate = useNavigate()
+
+  const removeItemFromCart = (id: string) =>
+    setCartItems(cartItems.filter((cartItem) => cartItem.id !== id))
 
   const validateCart = () => {
     const formattedCart = cartItems.map((cartItem) => ({
@@ -30,7 +34,10 @@ export const Cart = () => {
       )}
       {mutation.isIdle &&
         cartItems.map((cartItem) => (
-          <ItemInCart key={cartItem.id} currentItem={cartItem} />
+          <S.CartCard>
+            <ItemInCart key={cartItem.id} currentItem={cartItem} />
+            <Cross onClick={() => removeItemFromCart(cartItem.id)} />
+          </S.CartCard>
         ))}
       {mutation.isIdle && cartItems.length > 0 && (
         <S.ButtonsContainer>
