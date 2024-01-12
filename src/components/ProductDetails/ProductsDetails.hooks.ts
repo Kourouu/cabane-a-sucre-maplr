@@ -6,6 +6,6 @@ export const useGetProduct = () => {
     const { id } = useParams();
     return useQuery({
     queryKey: ['products', id],
-    queryFn: () => getProduct(id),
+    queryFn: () => getProduct(id ?? ''),
   });
 }
